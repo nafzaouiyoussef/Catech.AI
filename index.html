@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catech.AI - Get ready for the new era of AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 50%, #16213e 100%);
+            color: #F9FAFB;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Animated background elements */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 119, 198, 0.05) 0%, transparent 50%);
+            z-index: -1;
+        }
+        
+        /* Geometric lines animation */
+        .geometric-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        
+        .geometric-lines::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(90deg, transparent 98%, #8b5cf6 100%),
+                linear-gradient(0deg, transparent 98%, #3b82f6 100%);
+            background-size: 50px 50px;
+            animation: moveLines 20s linear infinite;
+        }
+        
+        @keyframes moveLines {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        /* Glowing stars */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #8b5cf6;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+        
+        .star:nth-child(odd) {
+            background: #3b82f6;
+            animation-delay: 1.5s;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        
+        /* Header styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+        }
+        
+        .logo {
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            font-size: 1.5rem;
+            text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+        }
+        
+        .logo-icon {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+        
+        .nav-link {
+            color: #e5e7eb;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: #8b5cf6;
+            text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            border: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        /* Hero section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 80px;
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff, #e5e7eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #9ca3af;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .email-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .email-input:focus {
+            outline: none;
+            border-color: #8b5cf6;
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .email-input::placeholder {
+            color: #6b7280;
+        }
+        
+        /* Robot illustration placeholder */
+        .robot-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(59, 130, 246, 0.1));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .robot-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            border-radius: 50%;
+            opacity: 0.2;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .robot-placeholder::after {
+            content: '🤖';
+            font-size: 4rem;
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.8));
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(-50%, -50%) translateY(0px); }
+            50% { transform: translate(-50%, -50%) translateY(-20px); }
+        }
+        
+        /* Brand generation section */
+        .brand-section {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .brand-section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.1);
+            border-color: rgba(139, 92, 246, 0.4);
+        }
+        
+        .input-field {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-color: #8b5cf6;
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .input-field::placeholder {
+            color: #6b7280;
+        }
+        
+        .loader {
+            border: 4px solid rgba(139, 92, 246, 0.3);
+            border-top: 4px solid #8b5cf6;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .copy-toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 12px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
+        }
+        
+        .copy-toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-10px);
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero {
+                padding-top: 100px;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Background Elements -->
+    <div class="geometric-lines"></div>
+    <div class="stars" id="stars-container"></div>
+    
+    <!-- Copy Toast -->
+    <div id="copy-toast" class="copy-toast">Copied to clipboard!</div>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="logo-icon"></div>
+                    <span class="logo">Catech.AI</span>
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#blog" class="nav-link">Blog</a>
+                </nav>
+                
+                <!-- Action Buttons -->
+                <div class="flex items-center space-x-4">
+                    <button class="btn-secondary px-6 py-2 rounded-full">Sign Up</button>
+                    <button class="btn-primary px-6 py-2 rounded-full">Login</button>
+                </div>
+            </div>
+        </div>
+        </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Content -->
+                <div class="space-y-8">
+                    <h1 class="hero-title">Get ready for the new era of AI</h1>
+                    <p class="hero-subtitle">
+                        Transform your business ideas into complete brand identities with the power of artificial intelligence. 
+                        Generate names, logos, colors, and marketing strategies in seconds.
+                    </p>
+                    
+                    <!-- Email Input -->
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <input 
+                            type="email" 
+                            id="email-input" 
+                            class="email-input flex-1 px-6 py-4 rounded-full text-lg" 
+                            placeholder="Enter your email address"
+                        >
+                        <button id="get-started-btn" class="btn-primary px-8 py-4 rounded-full text-lg font-semibold">
+                            Get Started
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Right Content - Robot Illustration -->
+                <div class="robot-placeholder">
+                    <!-- Robot illustration will be here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Generation Section -->
+    <section id="brand-generator" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">AI-Powered Brand Generator</h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    Describe your business idea and watch as our AI creates a complete brand identity for you
+                </p>
+            </div>
+            
+            <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Input Section -->
+                <div class="brand-section p-8">
+                    <h3 class="text-2xl font-semibold text-white mb-6">1. Describe Your Vision</h3>
+                <div class="space-y-6">
+                    <div>
+                            <label for="idea-input" class="block text-sm font-medium text-gray-300 mb-2">Your Business Idea</label>
+                            <textarea 
+                                id="idea-input" 
+                                rows="4" 
+                                class="input-field w-full rounded-xl p-4 text-white" 
+                                placeholder="e.g., An AI-powered meal planning app for busy professionals that suggests recipes based on dietary needs and available ingredients."
+                            ></textarea>
+                    </div>
+                    <div>
+                            <label for="audience-input" class="block text-sm font-medium text-gray-300 mb-2">Target Audience</label>
+                            <input 
+                                type="text" 
+                                id="audience-input" 
+                                class="input-field w-full rounded-xl p-4 text-white" 
+                                placeholder="e.g., Young professionals, families, fitness enthusiasts"
+                            >
+                    </div>
+                    <div>
+                            <label for="vibe-input" class="block text-sm font-medium text-gray-300 mb-2">Desired Vibe / Tone</label>
+                            <input 
+                                type="text" 
+                                id="vibe-input" 
+                                class="input-field w-full rounded-xl p-4 text-white" 
+                                placeholder="e.g., Playful, professional, minimalist, luxurious"
+                            >
+                    </div>
+                     <div>
+                            <label for="api-key-input" class="block text-sm font-medium text-gray-300 mb-2">Your Gemini API Key</label>
+                            <input 
+                                type="password" 
+                                id="api-key-input" 
+                                class="input-field w-full rounded-xl p-4 text-white" 
+                                placeholder="Enter your API key"
+                            >
+                            <p class="mt-2 text-xs text-gray-500">Get your key from Google AI Studio.</p>
+                        </div>
+                    </div>
+                    <button id="generate-btn" class="mt-8 w-full btn-primary py-4 px-6 rounded-xl text-lg font-semibold flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed">
+                    <span id="btn-text">Generate Brand</span>
+                    <div id="loader" class="loader hidden ml-3"></div>
+                </button>
+            </div>
+
+            <!-- Output Section -->
+            <div id="output-container" class="space-y-8">
+                    <div id="placeholder" class="brand-section p-8 text-center text-gray-400 h-full flex items-center justify-center min-h-[400px]">
+                        <div>
+                            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                            </div>
+                            <p class="text-lg">Your complete brand kit will appear here...</p>
+                            <p class="text-sm text-gray-500 mt-2">Powered by advanced AI technology</p>
+                        </div>
+                    </div>
+                    <!-- Generated content will be injected here -->
+                </div>
+            </div>
+    </div>
+    </section>
+
+    <script type="module">
+        // Create animated stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars-container');
+            const numStars = 50;
+            
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        // Initialize stars when page loads
+        document.addEventListener('DOMContentLoaded', createStars);
+        
+        const ideaInput = document.getElementById('idea-input');
+        const audienceInput = document.getElementById('audience-input');
+        const vibeInput = document.getElementById('vibe-input');
+        const apiKeyInput = document.getElementById('api-key-input');
+        const generateBtn = document.getElementById('generate-btn');
+        const btnText = document.getElementById('btn-text');
+        const loader = document.getElementById('loader');
+        const outputContainer = document.getElementById('output-container');
+        const placeholder = document.getElementById('placeholder');
+        const getStartedBtn = document.getElementById('get-started-btn');
+        
+        // Get Started button functionality
+        getStartedBtn.addEventListener('click', () => {
+            document.getElementById('brand-generator').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+        
+        // Pre-fill for demonstration
+        ideaInput.value = "A subscription box for eco-friendly, zero-waste home products.";
+        audienceInput.value = "Environmentally conscious millennials";
+        vibeInput.value = "Earthy, minimalist, and trustworthy";
+
+        generateBtn.addEventListener('click', generateBrand);
+
+        async function generateBrand() {
+            if (!ideaInput.value.trim()) {
+                console.error("Please describe your business idea.");
+                return;
+            }
+            if (!apiKeyInput.value.trim()) {
+                placeholder.classList.add('hidden');
+                outputContainer.innerHTML = `<div class="brand-section p-8 text-center text-red-400">
+                    <p>Please enter your Gemini API Key to proceed.</p>
+                </div>`;
+                return;
+            }
+
+            setLoading(true);
+            placeholder.classList.add('hidden');
+            outputContainer.innerHTML = '';
+            
+            const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+            try {
+                // Step 1: Combined call for all initial text assets
+                const initialAssets = await generateInitialBrandAssets();
+                const { names, slogans, colors, logoConcept } = initialAssets;
+                
+                renderNames(names);
+                renderSlogans(slogans);
+                renderColors(colors);
+
+                const primaryName = names['Modern & Techy']?.[0] || names['Creative & Playful']?.[0] || 'My Awesome Brand';
+                
+                // Step 2: Generate Logo Image (with error handling)
+                renderLogoPlaceholder();
+                try {
+                const logoImageUrl = await generateImageFromConcept(logoConcept);
+                renderLogoImage(logoImageUrl);
+                } catch (logoError) {
+                    console.warn("Logo generation failed:", logoError);
+                    const logoContainer = document.getElementById('logo-container');
+                    if (logoContainer) {
+                        logoContainer.innerHTML = `
+                            <div class="text-center text-yellow-400">
+                                <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-yellow-500/20 flex items-center justify-center">
+                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                                    </svg>
+                                </div>
+                                <p class="font-medium">Logo generation skipped</p>
+                                <p class="text-sm text-gray-500 mt-2">Rate limit reached for image generation</p>
+                            </div>
+                        `;
+                    }
+                }
+                
+                // Add a small delay to further space out requests
+                await delay(3000);
+
+                // Step 3: Marketing Strategy
+                const marketingData = await generateMarketingStrategy(primaryName);
+                renderMarketingStrategy(marketingData);
+                
+                // Step 4: Instagram Posts (with error handling for images)
+                renderInstaPostsPlaceholder();
+                try {
+                const instaPostsData = await generateInstagramPosts(primaryName, marketingData.keyMessaging.join(' '));
+                
+                const postsWithImages = [];
+                for (const post of instaPostsData) {
+                        try {
+                            // Wait for 60 seconds before each image generation to stay within free tier limits.
+                            await delay(60000); 
+                    const imageUrl = await generateImageFromConcept(post.imagePrompt);
+                    postsWithImages.push({ ...post, imageUrl });
+                        } catch (imageError) {
+                            console.warn("Image generation failed for post:", imageError);
+                            // Add post without image
+                            postsWithImages.push({ 
+                                ...post, 
+                                imageUrl: null,
+                                imageError: "Image generation skipped due to rate limits"
+                            });
+                        }
+                    }
+                    renderInstagramPosts(postsWithImages, primaryName);
+                } catch (postsError) {
+                    console.warn("Instagram posts generation failed:", postsError);
+                    const instaCard = document.getElementById('insta-posts-card');
+                    if (instaCard) {
+                        instaCard.querySelector('.grid').innerHTML = `
+                            <div class="col-span-full text-center text-yellow-400 py-8">
+                                <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-yellow-500/20 flex items-center justify-center">
+                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                                    </svg>
+                                </div>
+                                <p class="font-medium">Instagram posts generation skipped</p>
+                                <p class="text-sm text-gray-500 mt-2">Rate limit reached for content generation</p>
+                            </div>
+                        `;
+                    }
+                }
+
+            } catch (error) {
+                console.error("An error occurred during generation:", error);
+                let errorMessage = error.message;
+                let suggestion = "";
+                
+                if (errorMessage.includes("quota") || errorMessage.includes("rate")) {
+                    errorMessage = "API Rate Limit Exceeded";
+                    suggestion = "The free tier has daily limits. Please try again tomorrow or upgrade your plan. For now, you can still see the text-based results above.";
+                } else if (errorMessage.includes("API key")) {
+                    suggestion = "Please check your API key and try again.";
+                } else if (errorMessage.includes("safety")) {
+                    suggestion = "Try adjusting your business idea or vibe to be more generic.";
+                }
+                
+                outputContainer.innerHTML += `<div class="brand-section p-8 text-center text-red-400">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-red-500/20 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                        </svg>
+                    </div>
+                    <p class="font-semibold text-lg mb-2">${errorMessage}</p>
+                    <p class="text-sm text-gray-400 mt-2 break-words">${suggestion}</p>
+                    <div class="mt-4 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+                        <p class="text-yellow-300 text-sm">
+                            💡 <strong>Tip:</strong> The text-based brand assets (names, slogans, colors, marketing strategy) should still be generated above. Only image generation is affected by rate limits.
+                        </p>
+                    </div>
+                </div>`;
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        function setLoading(isLoading) {
+            generateBtn.disabled = isLoading;
+            if (isLoading) {
+                btnText.textContent = 'Generating...';
+                loader.classList.remove('hidden');
+            } else {
+                btnText.textContent = 'Generate Brand';
+                loader.classList.add('hidden');
+            }
+        }
+
+        // --- API CALL FUNCTIONS ---
+
+        async function makeApiCall(prompt, isJson = true) {
+            const apiKey = apiKeyInput.value.trim();
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+            const payload = {
+                contents: [{ parts: [{ text: prompt }] }],
+            };
+
+            if (isJson) {
+                payload.generationConfig = {
+                    responseMimeType: "application/json",
+                };
+            }
+
+            let response;
+            let attempts = 0;
+            const maxAttempts = 3;
+            while(attempts < maxAttempts) {
+                try {
+                    const res = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!res.ok) {
+                        const errorBody = await res.json().catch(() => ({ error: { message: `API Error with status: ${res.status}` } }));
+                        const errorMessage = errorBody?.error?.message || `API call failed with status: ${res.status}`;
+                        throw new Error(errorMessage);
+                    }
+                    response = await res.json();
+                    break; 
+                } catch (error) {
+                    attempts++;
+                    if (attempts >= maxAttempts) throw error;
+                    await new Promise(resolve => setTimeout(resolve, 1000 * Math.pow(2, attempts)));
+                }
+            }
+            
+            const rawText = response.candidates?.[0]?.content?.parts?.[0]?.text;
+
+            if (!rawText) {
+                const reason = response?.candidates?.[0]?.finishReason;
+                if (reason === 'SAFETY') {
+                    throw new Error("Generation failed due to the API's safety settings. Try a different idea or vibe.");
+                }
+                throw new Error("Invalid response structure from API. No text part found.");
+            }
+
+            if (isJson) {
+                try {
+                    const jsonStart = rawText.indexOf('{');
+                    const jsonEnd = rawText.lastIndexOf('}');
+                    const arrayStart = rawText.indexOf('[');
+                    const arrayEnd = rawText.lastIndexOf(']');
+                    let jsonString;
+                    if (jsonStart !== -1 && jsonEnd !== -1) { // It should always be an object now
+                         jsonString = rawText.substring(jsonStart, jsonEnd + 1);
+                    } else {
+                        throw new Error("Could not find a valid JSON object in the API response.");
+                    }
+                    return JSON.parse(jsonString);
+                } catch (e) {
+                    console.error("Failed to parse JSON from response:", rawText);
+                    throw new Error(`JSON parsing failed: ${e.message}`);
+                }
+            } else {
+                return rawText;
+            }
+        }
+
+        async function makeImageApiCall(prompt) {
+            const apiKey = apiKeyInput.value.trim();
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent?key=${apiKey}`;
+
+            const payload = {
+                contents: [{ parts: [{ text: prompt }] }],
+                generationConfig: { responseModalities: ['IMAGE'] },
+            };
+
+            let response;
+            let attempts = 0;
+            const maxAttempts = 3;
+            while(attempts < maxAttempts) {
+                try {
+                    const res = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!res.ok) {
+                        const errorBody = await res.json().catch(() => ({ error: { message: `API Error with status: ${res.status}` } }));
+                        const errorMessage = errorBody?.error?.message || `Image API call failed with status: ${res.status}`;
+                        console.error("Image API Error Body:", JSON.stringify(errorBody, null, 2));
+                        throw new Error(errorMessage);
+                    }
+                    response = await res.json();
+                    break;
+                } catch (error) {
+                    attempts++;
+                    if (attempts >= maxAttempts) throw error;
+                    await new Promise(resolve => setTimeout(resolve, 2000 * Math.pow(2, attempts)));
+                }
+            }
+
+            const base64Data = response?.candidates?.[0]?.content?.parts?.find(p => p.inlineData)?.inlineData?.data;
+            if (!base64Data) {
+                const reason = response?.candidates?.[0]?.finishReason;
+                 if (reason === 'SAFETY') {
+                    throw new Error("Image generation failed due to safety settings. This can sometimes happen with abstract logo concepts. Please try again.");
+                }
+                console.error("Full Image API Response:", JSON.stringify(response, null, 2));
+                throw new Error("Invalid response structure from Image API.");
+            }
+
+            return `data:image/png;base64,${base64Data}`;
+        }
+
+        function generateInitialBrandAssets() {
+            const prompt = `
+            Based on the provided business details, generate a complete set of initial branding assets.
+
+            **Business Idea:** "${ideaInput.value}"
+            **Target Audience:** "${audienceInput.value}"
+            **Desired Vibe:** "${vibeInput.value}"
+
+            You MUST return a single, valid JSON object with the following top-level keys: "names", "slogans", "colors", and "logoConcept".
+
+            **JSON Structure Details:**
+            1.  **"names"**: An object with three keys: "Modern & Techy", "Classic & Trustworthy", and "Creative & Playful". The value for each key should be an array of 3-4 generated brand name strings.
+            2.  **"slogans"**: An array of 5 catchy slogan strings, each no more than 7 words long.
+            3.  **"colors"**: An object with five keys representing color roles: "primary", "secondary", "accent", "neutral_dark", and "neutral_light". The value for each key must be a valid HEX code string.
+            4.  **"logoConcept"**: A single string containing a concise, safe-for-work prompt for an AI image generator to create a minimalist logo. The prompt must start with "vector logo of", describe a simple abstract symbol, specify a "minimalist, clean, flat design style", and end with ", on a white background, high resolution". It must not contain any brand names or text.
+
+            Your entire response MUST be only the JSON object. Do not include markdown fences or any other text.
+            `;
+            return makeApiCall(prompt, true);
+        }
+
+        function generateMarketingStrategy(brandName) {
+            const prompt = `
+                Create a high-level marketing strategy for a new business.
+                **Business Name:** "${brandName}"
+                **Business Idea:** "${ideaInput.value}"
+                **Target Audience:** "${audienceInput.value}"
+                **Desired Vibe:** "${vibeInput.value}"
+                The strategy should include: A "Target Audience Deep Dive", three "Key Messaging" points, and three "Recommended Channels".
+                You MUST return a single, valid JSON object. The top-level keys should be "targetAudienceDeepDive", "keyMessaging", and "recommendedChannels". The values for messaging and channels should be arrays of strings. Do not include markdown fences or any other text.`;
+            return makeApiCall(prompt, true);
+        }
+
+        function generateInstagramPosts(brandName, keyMessaging) {
+             const prompt = `
+                Generate 3 distinct Instagram post ideas for a new brand: an educational post, a behind-the-scenes post, and a promotional post.
+                **Business Name:** "${brandName}"
+                **Business Idea:** "${ideaInput.value}"
+                **Key Messaging:** "${keyMessaging}"
+                For each post, provide:
+                - A short, engaging caption with emojis and 3-5 hashtags.
+                - A detailed, safe-for-work prompt for an AI image generator to create a visually appealing, photorealistic image. The image prompt MUST describe a scene and must NOT contain brand names, text, or any potentially unsafe words.
+                You MUST return a single, valid JSON array of objects. Each object should have two keys: "caption" (string) and "imagePrompt" (string). Do not include markdown fences or any other text.`;
+            return makeApiCall(prompt, true);
+        }
+
+        function generateImageFromConcept(imagePrompt) {
+            return makeImageApiCall(imagePrompt);
+        }
+        
+        // --- RENDER FUNCTIONS ---
+
+        function renderNames(data) {
+            let content = `<div class="brand-section p-8">
+                <h3 class="text-xl font-semibold text-white mb-6">Brand Names</h3>`;
+            
+            for (const category in data) {
+                content += `<h4 class="mt-4 mb-3 text-md font-medium text-purple-400">${category}</h4>
+                    <div class="flex flex-wrap gap-2">`;
+                data[category].forEach(name => {
+                    content += `<button class="bg-gradient-to-r from-purple-500/20 to-blue-500/20 text-gray-200 text-sm px-4 py-2 rounded-full hover:from-purple-500/30 hover:to-blue-500/30 transition-all duration-300 border border-purple-500/30 hover:border-purple-400/50" onclick="copyToClipboard('${name}')">${name}</button>`;
+                });
+                content += `</div>`;
+            }
+            
+            content += `</div>`;
+            outputContainer.innerHTML += content;
+        }
+
+        function renderSlogans(data) {
+            let content = `<div class="brand-section p-8">
+                <h3 class="text-xl font-semibold text-white mb-6">Slogans</h3>
+                <ul class="space-y-4">`;
+            
+            data.forEach(slogan => {
+                content += `<li class="flex justify-between items-center text-gray-300 bg-gradient-to-r from-purple-500/10 to-blue-500/10 p-4 rounded-xl border border-purple-500/20">
+                    <span class="text-lg">"${slogan}"</span>
+                    <button class="text-purple-400 hover:text-purple-300 transition-colors p-2 hover:bg-purple-500/20 rounded-lg" onclick="copyToClipboard('${slogan.replace(/'/g, "\\'")}')">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                    </button>
+                </li>`;
+            });
+            
+            content += `</ul></div>`;
+            outputContainer.innerHTML += content;
+        }
+        
+        function renderColors(data) {
+            let content = `<div class="brand-section p-8">
+                <h3 class="text-xl font-semibold text-white mb-6">Color Palette</h3>
+                <div class="grid grid-cols-3 sm:grid-cols-5 gap-6 text-center">`;
+            
+            // Handle new color key names like neutral_dark
+            const colorRoles = {
+                'primary': 'Primary',
+                'secondary': 'Secondary',
+                'accent': 'Accent',
+                'neutral_dark': 'Dark',
+                'neutral_light': 'Light'
+            };
+
+            for (const role in data) {
+                 if (Object.prototype.hasOwnProperty.call(data, role)) {
+                    const color = data[role];
+                    const displayName = colorRoles[role] || role;
+                    content += `<div class="group">
+                        <div class="w-full h-24 rounded-xl cursor-pointer transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25" style="background-color: ${color};" onclick="copyToClipboard('${color}')"></div>
+                        <p class="mt-3 text-sm font-medium text-gray-300 capitalize">${displayName}</p>
+                        <p class="text-xs text-gray-500 cursor-pointer hover:text-purple-400 transition-colors" onclick="copyToClipboard('${color}')">${color}</p>
+                    </div>`;
+                }
+            }
+            
+            content += `</div></div>`;
+            outputContainer.innerHTML += content;
+        }
+
+        function renderLogoPlaceholder() {
+            let content = `<div id="logo-card" class="brand-section p-8">
+                <h3 class="text-xl font-semibold text-white mb-6">Logo</h3>
+                <div id="logo-container" class="flex items-center justify-center bg-gradient-to-br from-purple-500/10 to-blue-500/10 rounded-xl h-64 min-h-[16rem] border border-purple-500/20">
+                    <div class="text-center">
+                        <div class="loader mb-4 mx-auto"></div>
+                        <p class="text-purple-300 text-lg font-medium">Generating your logo...</p>
+                        <p class="text-gray-500 text-sm mt-2">(This can take a moment)</p>
+                    </div>
+                </div>
+            </div>`;
+            outputContainer.innerHTML += content;
+        }
+
+        function renderLogoImage(imageUrl) {
+            const logoContainer = document.getElementById('logo-container');
+            if (logoContainer) {
+                logoContainer.innerHTML = `<img src="${imageUrl}" alt="Generated Logo" class="rounded-xl object-contain h-full w-full shadow-lg">`;
+            }
+        }
+
+        function renderMarketingStrategy(data) {
+             let content = `<div class="brand-section p-8">
+                <h3 class="text-xl font-semibold text-white mb-6">Marketing Strategy</h3>
+                <h4 class="mt-4 mb-3 text-md font-medium text-purple-400">Target Audience Deep Dive</h4>
+                <p class="text-gray-300 text-sm bg-gradient-to-r from-purple-500/10 to-blue-500/10 p-4 rounded-xl border border-purple-500/20">${data.targetAudienceDeepDive}</p>
+                <h4 class="mt-6 mb-3 text-md font-medium text-purple-400">Key Messaging</h4>
+                <ul class="list-disc list-inside space-y-2 text-gray-300 text-sm bg-gradient-to-r from-purple-500/10 to-blue-500/10 p-4 rounded-xl border border-purple-500/20">
+                    ${data.keyMessaging.map(msg => `<li>${msg}</li>`).join('')}
+                </ul>
+                <h4 class="mt-6 mb-3 text-md font-medium text-purple-400">Recommended Channels</h4>
+                 <div class="flex flex-wrap gap-2">
+                    ${data.recommendedChannels.map(channel => `<span class="bg-gradient-to-r from-purple-500/20 to-blue-500/20 text-gray-200 text-sm px-4 py-2 rounded-full border border-purple-500/30 hover:border-purple-400/50 transition-colors">${channel}</span>`).join('')}
+                </div>
+            </div>`;
+            outputContainer.innerHTML += content;
+        }
+
+        function renderInstaPostsPlaceholder() {
+            let content = `<div id="insta-posts-card" class="brand-section p-8 lg:col-span-2">
+                <h3 class="text-xl font-semibold text-white mb-6">Your First 3 Instagram Posts</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">`;
+
+            for (let i = 0; i < 3; i++) {
+                content += `<div class="bg-gradient-to-br from-purple-500/10 to-blue-500/10 rounded-xl border border-purple-500/20 overflow-hidden">
+                    <div class="w-full h-48 bg-gradient-to-br from-purple-500/20 to-blue-500/20 animate-pulse"></div>
+                    <div class="p-4">
+                        <div class="h-4 bg-purple-500/20 rounded w-3/4 mb-2 animate-pulse"></div>
+                        <div class="h-4 bg-purple-500/20 rounded w-1/2 animate-pulse"></div>
+                    </div>
+                </div>`;
+            }
+
+            content += `</div></div>`;
+            const outputParent = document.getElementById('output-container').parentElement;
+            outputParent.innerHTML += content;
+        }
+
+        function renderInstagramPosts(posts, brandName) {
+            const instaCard = document.getElementById('insta-posts-card');
+            if (!instaCard) return;
+
+            let postsHtml = '<div class="grid grid-cols-1 md:grid-cols-3 gap-6">';
+            posts.forEach(post => {
+                const escapedCaption = post.caption.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+                const imageHtml = post.imageUrl 
+                    ? `<img src="${post.imageUrl}" alt="Generated Instagram post image" class="w-full h-48 object-cover">`
+                    : `<div class="w-full h-48 bg-gradient-to-br from-purple-500/20 to-blue-500/20 flex items-center justify-center">
+                        <div class="text-center text-yellow-400">
+                            <div class="w-12 h-12 mx-auto mb-2 rounded-full bg-yellow-500/20 flex items-center justify-center">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                                </svg>
+                            </div>
+                            <p class="text-sm font-medium">Image skipped</p>
+                            <p class="text-xs text-gray-500">Rate limit reached</p>
+                        </div>
+                    </div>`;
+                
+                postsHtml += `
+                    <div class="bg-gradient-to-br from-purple-500/10 to-blue-500/10 rounded-xl overflow-hidden flex flex-col shadow-lg transition-transform duration-300 hover:transform hover:-translate-y-2 hover:shadow-purple-500/25 border border-purple-500/20">
+                        <div class="p-4 flex items-center gap-3 border-b border-purple-500/20">
+                           <div class="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
+                           </div>
+                           <span class="font-semibold text-sm text-white">${brandName}</span>
+                        </div>
+                        ${imageHtml}
+                        <div class="p-4 flex-grow flex flex-col">
+                            <p class="text-gray-300 text-sm whitespace-pre-wrap flex-grow">${post.caption}</p>
+                            <button onclick="copyToClipboard('${escapedCaption}')" class="mt-4 text-xs bg-gradient-to-r from-purple-500/20 to-blue-500/20 hover:from-purple-500/30 hover:to-blue-500/30 text-purple-300 font-semibold py-2 px-3 rounded-lg flex items-center justify-center gap-2 transition-all duration-300 border border-purple-500/30 hover:border-purple-400/50">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                                Copy Caption
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            postsHtml += '</div>';
+
+            instaCard.querySelector('.grid').innerHTML = postsHtml;
+        }
+
+        // --- UTILITY FUNCTIONS ---
+        
+        window.copyToClipboard = (text) => {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            
+            const toast = document.getElementById('copy-toast');
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        };
+    </script>
+</body>
+</html>
+
