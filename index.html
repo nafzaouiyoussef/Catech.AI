@@ -414,6 +414,21 @@
                         Generate names, logos, colors, and marketing strategies in seconds.
                     </p>
                     
+                    <!-- API Key Info -->
+                    <div class="bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/20 rounded-xl p-4 mb-6">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-sm text-purple-300 font-medium">Powered by Google Gemini AI</p>
+                                <p class="text-xs text-gray-400">Requires a free API key • No credit card needed</p>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <!-- Email Input -->
                     <div class="flex flex-col sm:flex-row gap-4">
                         <input 
@@ -441,9 +456,28 @@
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold text-white mb-4">AI-Powered Brand Generator</h2>
-                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-8">
                     Describe your business idea and watch as our AI creates a complete brand identity for you
                 </p>
+                
+                <!-- Step-by-step guide -->
+                <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-gradient-to-br from-purple-500/10 to-blue-500/10 border border-purple-500/20 rounded-xl p-6 text-center">
+                        <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center text-white font-bold text-lg">1</div>
+                        <h3 class="text-lg font-semibold text-white mb-2">Get API Key</h3>
+                        <p class="text-sm text-gray-400">Get your free Gemini API key from Google AI Studio</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-purple-500/10 to-blue-500/10 border border-purple-500/20 rounded-xl p-6 text-center">
+                        <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center text-white font-bold text-lg">2</div>
+                        <h3 class="text-lg font-semibold text-white mb-2">Describe Your Idea</h3>
+                        <p class="text-sm text-gray-400">Tell us about your business, audience, and desired vibe</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-purple-500/10 to-blue-500/10 border border-purple-500/20 rounded-xl p-6 text-center">
+                        <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center text-white font-bold text-lg">3</div>
+                        <h3 class="text-lg font-semibold text-white mb-2">Generate Brand</h3>
+                        <p class="text-sm text-gray-400">Watch AI create your complete brand identity</p>
+                    </div>
+                </div>
             </div>
             
             <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -478,7 +512,7 @@
                                 placeholder="e.g., Playful, professional, minimalist, luxurious"
                             >
                     </div>
-                     <div>
+                        <div>
                             <label for="api-key-input" class="block text-sm font-medium text-gray-300 mb-2">Your Gemini API Key</label>
                             <input 
                                 type="password" 
@@ -486,7 +520,32 @@
                                 class="input-field w-full rounded-xl p-4 text-white" 
                                 placeholder="Enter your API key"
                             >
-                            <p class="mt-2 text-xs text-gray-500">Get your key from Google AI Studio.</p>
+                            <div class="mt-3 p-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-xl">
+                                <div class="flex items-start gap-3">
+                                    <div class="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="flex-1">
+                                        <p class="text-sm text-blue-300 font-medium mb-1">Need an API key?</p>
+                                        <p class="text-xs text-gray-400 mb-2">Get your free Gemini API key from Google AI Studio</p>
+                                        <a 
+                                            href="https://aistudio.google.com/app/apikey" 
+                                            target="_blank" 
+                                            class="inline-flex items-center gap-2 text-xs bg-gradient-to-r from-blue-500 to-purple-500 text-white px-3 py-2 rounded-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-300 font-medium"
+                                        >
+                                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                            </svg>
+                                            Get Free API Key
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-2 text-xs text-gray-500">
+                                <span class="text-yellow-400">💡</span> Free tier includes 15 requests per minute. No credit card required.
+                            </div>
                         </div>
                     </div>
                     <button id="generate-btn" class="mt-8 w-full btn-primary py-4 px-6 rounded-xl text-lg font-semibold flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed">
